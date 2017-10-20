@@ -28,13 +28,9 @@ public class LoginComponent {
         PageFactory.initElements(driver, this);
     }
 
-    public WebElement getTbxLogin() {
-        return tbxLogin;
-    }
-    public WebElement getTbxPassword() {
-        return tbxPassword;
-    }
-    public WebElement getBtnLogin() {
-        return btnLogin;
+    public void login() {
+        tbxLogin.sendKeys("");
+        tbxPassword.sendKeys("");
+        btnLogin.click();
     }
 }

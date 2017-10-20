@@ -27,8 +27,9 @@ public class AmazonHomeComponent {
         PageFactory.initElements(driver, this);
     }
 
-    public void navigateToSignInComponent(){
+    public LoginComponent navigateToSignInComponent(){
         actions.moveToElement(lnkHelloSignIn);
         btnSignIn.click();
+        return new LoginComponent();
     }
 }
