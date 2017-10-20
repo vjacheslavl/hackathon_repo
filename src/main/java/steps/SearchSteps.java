@@ -12,9 +12,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class SearchSteps {
     private static final Logger logger = LoggerFactory.getLogger(SearchSteps.class);
-    NavigationSearchBarComponent navigationSearchBarComponent = new NavigationSearchBarComponent();
-    LeftNavigationBarComponent leftNavigationBarComponent = new LeftNavigationBarComponent();
-    SearchResultComponent searchResultComponent = new SearchResultComponent();
+    private NavigationSearchBarComponent navigationSearchBarComponent = new NavigationSearchBarComponent();
+    private LeftNavigationBarComponent leftNavigationBarComponent = new LeftNavigationBarComponent();
+    private SearchResultComponent searchResultComponent = new SearchResultComponent();
 
     @Step
     public SearchSteps whenUserSelectedCategory(String category) {
@@ -64,4 +64,8 @@ public class SearchSteps {
         return new ProductItemSteps();
     }
 
+    public ShoppingCartSteps whenUserSelectsProductAndPlatform(String product, String platform) {
+        searchResultComponent.selectProductAndPlatform(product, platform);
+        return new ShoppingCartSteps();
+    }
 }

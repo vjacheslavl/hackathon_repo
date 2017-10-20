@@ -1,14 +1,13 @@
 package components;
 
 import config.webdriver.DriverBase;
+import context.TestContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import dataobjects.TestUser;
-import providers.TestUsersProvider;
 
 
 public class LoginComponent {
@@ -31,11 +30,8 @@ public class LoginComponent {
     }
 
     public void login() {
-        TestUsersProvider testUsersProvider = TestUsersProvider.getInstance();
-        final TestUser user = testUsersProvider.take();
-
-        tbxLogin.sendKeys(user.getLogin());
-        tbxPassword.sendKeys(user.getPassword());
+        tbxLogin.sendKeys(TestContext.user.getEmail());
+        tbxPassword.sendKeys(TestContext.user.getPassword());
         btnLogin.click();
     }
 }

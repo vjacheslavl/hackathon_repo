@@ -14,10 +14,10 @@ public class ShoppingCartSteps {
     CartComponent cartComponent = new CartComponent();
 
 
-    public ShoppingCartSteps thenShoppingCartDisplayed() {
+    public ProductItemSteps thenShoppingCartDisplayed() {
         logger.info("Checking that shopping cart is displayed");
         assertThat(cartComponent.isDisplayed()).isTrue().as("Shopping cart is not displayed");
-        return this;
+        return new ProductItemSteps();
     }
 
     public CheckoutComponent whenUserProceedsToCheckout() {
