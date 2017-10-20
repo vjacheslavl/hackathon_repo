@@ -11,21 +11,22 @@ public class BuyAmazonProductsTest extends TestContext {
     @Story("Playstation 4")
     void buyPlaystation4() {
 
+
         startTest()
                 .givenUserLoggedIn()
                 .whenUserSearchesFor("Playstation 4")
                 .whenUserSetsSorting("Price: Low to High")
                 .whenUserSelectedSpecificCategory("Consoles")
                 .whenUserSelectedShipsToCountry()
-
                 .thenSearchResultDisplayed()
-
                 .whenUserSelectedBestSellerProduct()
-
                 .thenProductScreenDisplayed()
-
                 .whenUserAddsProductToCart()
+                .thenShoppingCartDisplayed()
+                .whenUserProceedsToCheckout()
+                .deliverToThisAddress()
+                .clickContinue()
+                .thenPaymentIsDispalyed();
 
-                .thenShoppingCartDisplayed();
     }
 }
