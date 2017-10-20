@@ -74,7 +74,6 @@ public class WebElementHelper {
     }
 
     public static void selectByVisiableText(WebElement webElement, String value) {
-        isElementDisplayed(webElement);
         Select select = new Select(webElement);
         select.selectByVisibleText(value);
     }
