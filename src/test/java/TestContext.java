@@ -3,12 +3,13 @@ import config.webdriver.DriverBase;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.openqa.selenium.WebDriver;
-
 import java.util.concurrent.TimeUnit;
-
 import static config.ApplicationProperties.ApplicationProperty.APP_URL;
 import static config.ApplicationProperties.ApplicationProperty.WAIT_TIMEOUT_SHT;
+import io.qameta.allure.junit5.AllureJunit5AnnotationProcessor;
+import org.junit.jupiter.api.extension.ExtendWith;
+
+@ExtendWith(AllureJunit5AnnotationProcessor.class)
 
 public class TestContext {
 
