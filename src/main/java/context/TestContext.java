@@ -1,11 +1,14 @@
+package context;
+
 import config.ApplicationProperties;
 import config.webdriver.DriverBase;
+import dataobjects.TestUser;
 import io.qameta.allure.junit5.AllureJunit5AnnotationProcessor;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.slf4j.MDC;
+import providers.DistributedTestUsersProvider;
 import steps.LoginSteps;
 
 import java.util.concurrent.TimeUnit;
@@ -17,9 +20,12 @@ import static config.ApplicationProperties.ApplicationProperty.WAIT_TIMEOUT_SHT;
 
 public class TestContext {
 
+    public static TestUser user;
+
     @BeforeAll
     public static void instantiateDriverObject() {
-        MDC.put("userId", "some-user"); //add user for logging into logs
+        DistributedTestUsersProvider testUsersProvider = DistributedTestUsersProvider.getInstance();
+        user = testUsersProvider.take();
         DriverBase.instantiateDriverObject();
         DriverBase.getDriver().manage().window().maximize();
     }
@@ -32,6 +38,7 @@ public class TestContext {
 
     @AfterAll
     public static void closeDriverObjects() {
+        DistributedTestUsersProvider.getInstance().release(user);
         DriverBase.closeDriverObjects();
     }
 
