@@ -14,20 +14,27 @@ public class LoginComponent {
     Logger logger = LoggerFactory.getLogger(LoginComponent.class);
     private WebDriver driver;
 
-    @FindBy(css = "[id='search_query_top']")
+    @FindBy(css = "#ap_email")
     private WebElement tbxLogin;
 
-    @FindBy(css = "[name='submit_search']")
+    @FindBy(css = "#ap_password")
     private WebElement tbxPassword;
+
+    @FindBy(css = "#signInSubmit")
+    private WebElement btnLogin;
 
     public LoginComponent() {
         this.driver = DriverBase.getDriver();
         PageFactory.initElements(driver, this);
     }
 
-    public void enterLogin() {
+    public WebElement getTbxLogin() {
+        return tbxLogin;
     }
-
-    public void enterPassword() {
+    public WebElement getTbxPassword() {
+        return tbxPassword;
+    }
+    public WebElement getBtnLogin() {
+        return btnLogin;
     }
 }
