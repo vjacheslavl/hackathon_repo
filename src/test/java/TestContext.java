@@ -6,6 +6,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.slf4j.MDC;
+import steps.LoginSteps;
 
 import java.util.concurrent.TimeUnit;
 
@@ -21,8 +22,12 @@ public class TestContext {
         MDC.put("userId", "some-user"); //add user for logging into logs
         DriverBase.instantiateDriverObject();
         DriverBase.getDriver().manage().window().maximize();
+    }
+
+    protected LoginSteps startTest() {
         DriverBase.getDriver().get(ApplicationProperties.getString(APP_URL));
         DriverBase.getDriver().manage().timeouts().implicitlyWait(ApplicationProperties.getInteger(WAIT_TIMEOUT_SHT), TimeUnit.MILLISECONDS);
+        return new LoginSteps();
     }
 
     @AfterAll
