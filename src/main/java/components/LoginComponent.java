@@ -29,8 +29,8 @@ public class LoginComponent {
     }
 
     public void login() {
-        tbxLogin.sendKeys("");
-        tbxPassword.sendKeys("");
+        tbxLogin.sendKeys("nikolajs.okunevs@gmail.com");
+        tbxPassword.sendKeys("hackaton2017");
         btnLogin.click();
     }
 }
