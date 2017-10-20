@@ -24,7 +24,7 @@ public class ApplicationProperties {
                     setProperty(ApplicationProperty.TARGET_BROWSER.name, "CHROME"); //PHANTOMJS, OPERA, SAFARI, EDGE, IE, CHROME, FIREFOX
 
                     //application URL's
-                    setProperty(ApplicationProperty.APP_URL.name, "http://www.testcon.lt/hackathon/");
+                    setProperty(ApplicationProperty.APP_URL.name, "www.amazon.com");
                     setProperty(ApplicationProperty.SERVICE_URL.name, "https://ch7n1tyg3g.execute-api.eu-central-1.amazonaws.com");
 
                     //User settings

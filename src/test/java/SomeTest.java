@@ -4,6 +4,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import steps.LoginSteps;
 
 import static config.ApplicationProperties.ApplicationProperty.APP_URL;
 
@@ -23,12 +24,8 @@ public class SomeTest {
     @Test
     void test() {
         DriverBase.getDriver().get(ApplicationProperties.getString(APP_URL));
-        System.out.println("TEST");
-    }
-
-    @Test
-    void test2() {
-        System.out.println("TEST");
+        LoginSteps loginSteps = new LoginSteps();
+        System.out.println("First Tests");
     }
 
     @AfterEach
