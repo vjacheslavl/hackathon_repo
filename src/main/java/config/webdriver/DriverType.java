@@ -1,5 +1,6 @@
 package config.webdriver;
 
+import config.OsUtils;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -22,6 +23,8 @@ import static org.openqa.selenium.remote.CapabilityType.PROXY;
 public enum DriverType implements DriverSetup {
 
     FIREFOX {
+        final static String geckoDriverBaseName = "geckodriver";
+
         public DesiredCapabilities getDesiredCapabilities(Proxy proxySettings) {
             DesiredCapabilities capabilities = DesiredCapabilities.firefox();
             capabilities.setCapability("marionette", true);
@@ -29,11 +32,13 @@ public enum DriverType implements DriverSetup {
         }
 
         public WebDriver getWebDriverObject(DesiredCapabilities capabilities) {
-            System.setProperty("webdriver.gecko.driver", getClass().getResource("/drivers/geckodriver-v0.19.0-win32/geckodriver.exe").getPath());
+            System.setProperty("webdriver.gecko.driver", getDriverPath(geckoDriverBaseName));
             return new FirefoxDriver(capabilities);
         }
     },
     CHROME {
+        final static  String chromeDriverBaseName = "chromedriver";
+
         public DesiredCapabilities getDesiredCapabilities(Proxy proxySettings) {
             DesiredCapabilities capabilities = DesiredCapabilities.chrome();
             capabilities.setCapability("chrome.switches", Arrays.asList("--no-default-browser-check"));
@@ -44,12 +49,13 @@ public enum DriverType implements DriverSetup {
         }
 
         public WebDriver getWebDriverObject(DesiredCapabilities capabilities) {
-
-            System.setProperty("webdriver.chrome.driver", getClass().getResource("/drivers/chromedriver_win32/chromedriver.exe").getPath());
+            System.setProperty("webdriver.chrome.driver", getDriverPath(chromeDriverBaseName));
             return new ChromeDriver(capabilities);
         }
     },
     IE {
+        final static  String ieDriverBaseName = "IEDriverServer";
+
         public DesiredCapabilities getDesiredCapabilities(Proxy proxySettings) {
             DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
             capabilities.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
@@ -59,7 +65,7 @@ public enum DriverType implements DriverSetup {
         }
 
         public WebDriver getWebDriverObject(DesiredCapabilities capabilities) {
-            System.setProperty("webdriver.ie.driver", getClass().getResource("/drivers/IEDriverServer_Win32_3.4.0/IEDriverServer.exe").getPath());
+            System.setProperty("webdriver.ie.driver", getDriverPath(ieDriverBaseName));
             return new InternetExplorerDriver(capabilities);
         }
     },
@@ -128,5 +134,10 @@ public enum DriverType implements DriverSetup {
             cliArguments.add("--proxy=" + proxySettings.getHttpProxy());
         }
         return cliArguments;
+    }
+
+    protected String getDriverPath(String driverFileName) {
+        driverFileName = OsUtils.isWindows() ? driverFileName + ".exe" : driverFileName + "_mac";
+        return getClass().getClassLoader().getResource("drivers/" + driverFileName).getPath();
     }
 }
