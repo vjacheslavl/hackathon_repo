@@ -2,24 +2,28 @@ package dataobjects;
 /*
  * Copyright C.T.Co Ltd, 15/25 Jurkalnes Street, Riga LV-1046, Latvia. All rights reserved.
  */
- 
+
+import providers.dto.UserPayload;
+
 public class TestUser {
 
-    private String login;
+    private String email;
 
     private String password;
 
-    public TestUser(String login, String password) {
-        this.login = login;
+    private UserPayload userPayload;
+
+    public TestUser(String email, String password) {
+        this.email = email;
         this.password = password;
     }
 
-    public String getLogin() {
-        return login;
+    public String getEmail() {
+        return email;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -28,5 +32,13 @@ public class TestUser {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public UserPayload getUserPayload() {
+        return userPayload;
+    }
+
+    public void setUserPayload(UserPayload userPayload) {
+        this.userPayload = userPayload;
     }
 }

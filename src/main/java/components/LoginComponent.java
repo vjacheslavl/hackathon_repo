@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import dataobjects.TestUser;
-import providers.TestUsersProvider;
+import providers.DistributedTestUsersProvider;
 
 
 public class LoginComponent {
@@ -31,10 +31,10 @@ public class LoginComponent {
     }
 
     public void login() {
-        TestUsersProvider testUsersProvider = TestUsersProvider.getInstance();
+        DistributedTestUsersProvider testUsersProvider = DistributedTestUsersProvider.getInstance();
         final TestUser user = testUsersProvider.take();
 
-        tbxLogin.sendKeys(user.getLogin());
+        tbxLogin.sendKeys(user.getEmail());
         tbxPassword.sendKeys(user.getPassword());
         btnLogin.click();
     }

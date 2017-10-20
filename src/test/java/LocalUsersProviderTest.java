@@ -2,24 +2,24 @@
  * Copyright C.T.Co Ltd, 15/25 Jurkalnes Street, Riga LV-1046, Latvia. All rights reserved.
  */
 
-import org.junit.Test;
 import dataobjects.TestUser;
-import providers.TestUsersProvider;
+import org.junit.Test;
+import providers.LocalTestUsersProvider;
 
 import static org.junit.Assert.assertNotNull;
 
-public class TestUsersProviderTest {
+public class LocalUsersProviderTest {
 
     @Test
     public void getAndReleaseUser() {
-        final TestUsersProvider testUserProvider = TestUsersProvider.getInstance();
+        final LocalTestUsersProvider testUserProvider = LocalTestUsersProvider.getInstance();
         final TestUser testUser = testUserProvider.take();
-        assertNotNull(testUser.getLogin());
+        assertNotNull(testUser.getEmail());
         assertNotNull(testUser.getPassword());
 
         final Runnable parallelUserTake = () -> {
             final TestUser userAfterRelease = testUserProvider.take();
-            assertNotNull(userAfterRelease.getLogin());
+            assertNotNull(userAfterRelease.getEmail());
             assertNotNull(userAfterRelease.getPassword());
         };
 
