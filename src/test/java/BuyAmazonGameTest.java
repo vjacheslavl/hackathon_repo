@@ -14,7 +14,6 @@ public class BuyAmazonGameTest extends TestContext {
                 .givenUserLoggedIn()
                 .whenUserSearchesFor("just dance 2018")
                 .whenUserSelectsProductAndPlatform("Just Dance 2018", "PlayStation 4")
-                .thenShoppingCartDisplayed()
-                .whenUserAddsProductToCart();
+                .thenShoppingCartDisplayed();
     }
 }

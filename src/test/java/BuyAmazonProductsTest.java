@@ -29,4 +29,24 @@ public class BuyAmazonProductsTest extends TestContext {
                 .thenPaymentIsDispalyed();
 
     }
+
+    @Test
+    @Story("Playstation Camera")
+    void buyCamera() {
+
+        startTest()
+                .givenUserLoggedIn()
+                .whenUserSearchesFor("playstation cam")
+                .whenUserSelectedShipsToCountry()
+
+                .thenSearchResultDisplayed()
+
+                .whenUserSelectedBestSellerProduct()
+
+                .thenProductScreenDisplayed()
+
+                .whenUserAddsProductToCart()
+
+                .thenShoppingCartDisplayed();
+    }
 }
