@@ -15,8 +15,7 @@ public class SearchResultComponent {
     Logger logger = LoggerFactory.getLogger(LoginComponent.class);
     private WebDriver driver;
 
-    private final String RESULT_ITEM_SELECTOR = "//h2[contains(text(), '%s)]/ancestor::div[@class='s-item-container']";
-    private final String RESULT_ITEM_PLATFORM_SELECTOR = "//table//h3[contains(text(), '%s')]";
+    private final String RESULT_ITEM_SELECTOR = "//h2[contains(text(), '%s')]/ancestor::div[@class='s-item-container']";
 
 
     @FindBy(className = "buyingPrice")
