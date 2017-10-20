@@ -1,11 +1,14 @@
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.Test;
 
-
-public class SomeTest extends TestContext {
+@Feature("Buy products")
+public class BuyAmazonProductsTest extends TestContext {
 
 
     @Test
-    void addProductToTheChart() {
+    @Story("Playstation 4")
+    void buyPlaystation4() {
 
         startTest()
                 .givenUserLoggedIn()
