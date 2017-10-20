@@ -3,13 +3,7 @@ package support.web;
 import com.google.common.util.concurrent.Uninterruptibles;
 import config.ApplicationProperties;
 import config.webdriver.DriverBase;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -73,6 +67,10 @@ public class WebElementHelper {
         webElement.click();
     }
 
+    public static void click(By webElement) {
+        waitForElementToBeClickable(webElement).click();
+    }
+
     public static void selectByVisiableText(WebElement webElement, String value) {
         Select select = new Select(webElement);
         select.selectByVisibleText(value);
@@ -82,6 +80,11 @@ public class WebElementHelper {
         WebDriverWait webDriverWait = new WebDriverWait(DriverBase.getDriver(), ApplicationProperties.getInteger(WAIT_TIMEOUT_SHT));
         webDriverWait.until(ExpectedConditions.elementToBeClickable(webElement));
 
+    }
+
+    public static WebElement waitForElementToBeClickable(By webElement) {
+        WebDriverWait webDriverWait = new WebDriverWait(DriverBase.getDriver(), ApplicationProperties.getInteger(WAIT_TIMEOUT_SHT));
+        return webDriverWait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
     public static String getText(WebElement webElement) {

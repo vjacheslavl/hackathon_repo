@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import support.web.WebElementHelper;
 
 public class SearchResultComponent {
 
@@ -39,4 +40,7 @@ public class SearchResultComponent {
         lnkChipestProductWithBestSeller.click();
     }
 
+    public boolean isDisplayed() {
+        return WebElementHelper.isElementDisplayed(purchaseItemPrice);
+    }
 }

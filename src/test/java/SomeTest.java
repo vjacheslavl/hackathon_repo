@@ -9,8 +9,21 @@ public class SomeTest extends TestContext {
 
         startTest()
                 .givenUserLoggedIn()
-                .whenUserSelectedCategory("Video Games")
-                .whenUserSearchesFor("playstation console 4")
-                .whenUserSetsSorting("Price: Low to High");
+                .whenUserSearchesFor("Playstation 4")
+                .whenUserSetsSorting("Price: Low to High")
+                .whenUserSelectedSpecificCategory("Consoles")
+                .whenUserSelectedShipsToCountry()
+
+                .thenSearchResultDisplayed()
+
+                .whenUserSelectedBestSellerProduct()
+
+                .thenProductScreenDisplayed()
+
+                .whenUserAddsProductToCart()
+
+                .thenShoppingCartDisplayed()
+
+                .whenUserProceedsToCheckout();
     }
 }
