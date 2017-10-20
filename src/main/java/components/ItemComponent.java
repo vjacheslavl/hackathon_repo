@@ -21,7 +21,7 @@ public class ItemComponent {
     @FindBy(css = "#add-to-cart-button")
     private WebElement btnAddToCart;
 
-    @FindBy(css = "#smartShelfAddToCartNative")
+    @FindBy(css = "#nav-cart-count")
     private WebElement btnMoveToCart;
 
     public ItemComponent() {
