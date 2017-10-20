@@ -8,19 +8,16 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import support.web.WebElementHelper;
+import static support.web.WebElementHelper.*;
 
 public class SearchResultComponent {
 
-    Logger logger = LoggerFactory.getLogger(LoginComponent.class);
+    Logger logger = LoggerFactory.getLogger(SearchResultComponent.class);
     private WebDriver driver;
 
     private final String RESULT_ITEM_SELECTOR = "//h2[contains(text(), '%s)]/ancestor::div[@class='s-item-container']";
     private final String RESULT_ITEM_PLATFORM_SELECTOR = "//table//h3[contains(text(), '%s')]";
 
-
-    @FindBy(className = "buyingPrice")
-    private WebElement purchaseItemPrice;
 
     @FindBy(xpath = "//a[contains(./@id, 'BESTSELLER')]/ancestor::li")
     private WebElement lnkChipestProductWithBestSeller;
@@ -37,10 +34,10 @@ public class SearchResultComponent {
     }
 
     public void selectPlaystation(){
-        lnkChipestProductWithBestSeller.click();
+        click(lnkChipestProductWithBestSeller);
     }
 
     public boolean isDisplayed() {
-        return WebElementHelper.isElementDisplayed(purchaseItemPrice);
+        return isElementDisplayed(lnkChipestProductWithBestSeller);
     }
 }

@@ -18,7 +18,7 @@ public class CartComponent {
 
     private WebDriver driver;
 
-    @FindBy(css = "#proceedToCheckout")
+    @FindBy(name = "proceedToCheckout")
     private WebElement btnProceedToCheckout;
 
     public CartComponent() {

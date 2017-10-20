@@ -13,7 +13,7 @@ import static support.web.WebElementHelper.*;
 
 public class NavigationSearchBarComponent {
 
-    Logger logger = LoggerFactory.getLogger(LoginComponent.class);
+    Logger logger = LoggerFactory.getLogger(NavigationSearchBarComponent.class);
     private WebDriver driver;
 
     @FindBy(xpath = "//div[@class='nav-search-field ']/input")

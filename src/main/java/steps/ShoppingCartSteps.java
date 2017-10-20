@@ -1,6 +1,7 @@
 package steps;
 
 import components.CartComponent;
+import components.CheckoutComponent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -9,6 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ShoppingCartSteps {
     private static final Logger logger = LoggerFactory.getLogger(ShoppingCartSteps.class);
+
     CartComponent cartComponent = new CartComponent();
 
 
@@ -18,9 +20,9 @@ public class ShoppingCartSteps {
         return this;
     }
 
-    public ShoppingCartSteps whenUserProceedsToCheckout() {
+    public CheckoutComponent whenUserProceedsToCheckout() {
         logger.info("Proceed to checkout");
         cartComponent.goToCheckout();
-        return this;
+        return new CheckoutComponent();
     }
 }

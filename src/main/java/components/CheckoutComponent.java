@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import steps.PaymentStep;
 
 public class CheckoutComponent {
 
@@ -17,7 +18,7 @@ public class CheckoutComponent {
     @FindBy(xpath = "//a[contains(.,'Deliver to this address')]")
     private WebElement btnDeliverToThisAddress;
 
-    @FindBy(xpath = "//input[contains(.,'Continue')]")
+    @FindBy(xpath = "//input[@type='submit']")
     private WebElement btnContinue;
 
 
@@ -26,11 +27,13 @@ public class CheckoutComponent {
         PageFactory.initElements(driver, this);
     }
 
-    public void deliverToThisAddress(){
+    public CheckoutComponent deliverToThisAddress(){
         btnDeliverToThisAddress.click();
+        return this;
     }
 
-    public void clickContinue(){
+    public PaymentStep clickContinue(){
         btnContinue.click();
+        return new PaymentStep();
     }
 }

@@ -25,6 +25,9 @@ public class ItemComponent {
     @FindBy(css = "#nav-cart-count")
     private WebElement btnMoveToCart;
 
+    @FindBy(className = "buyingPrice")
+    private WebElement purchaseItemPrice;
+
     public ItemComponent() {
         this.driver = DriverBase.getDriver();
         this.actions = new Actions(driver);

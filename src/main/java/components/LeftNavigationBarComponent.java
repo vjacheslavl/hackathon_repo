@@ -8,11 +8,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import support.web.WebElementHelper;
+import static support.web.WebElementHelper.*;
 
 public class LeftNavigationBarComponent {
 
-    Logger logger = LoggerFactory.getLogger(LoginComponent.class);
+    Logger logger = LoggerFactory.getLogger(LeftNavigationBarComponent.class);
     private WebDriver driver;
 
     private final String ITEM_CATEGORY_LOCATOR = "//div[contains(@id, 'leftNav')]//span[contains(text(), '%s')]";
@@ -28,14 +28,14 @@ public class LeftNavigationBarComponent {
 
     public LeftNavigationBarComponent searchByCategory(String categoryName) {
         WebElement category = driver.findElement(By.xpath(String.format(ITEM_CATEGORY_LOCATOR, categoryName)));
-        WebElementHelper.hoverOverWebelement(category);
-        category.click();
+        hoverOverWebelement(category);
+        click(category);
         return new LeftNavigationBarComponent();
     }
 
     public LeftNavigationBarComponent selectShipByCountry() {
         WebElement category = driver.findElement(By.xpath(SHIPPING_LOCATOR));
-        WebElementHelper.click(By.xpath(SHIPPING_LOCATOR));
+        click(By.xpath(SHIPPING_LOCATOR));
         return new LeftNavigationBarComponent();
     }
 
